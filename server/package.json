@@ -1,0 +1,39 @@
+{
+  "name": "typescript-express-server",
+  "author": "Apostol Nikov",
+  "version": "1.0.0",
+  "main": "./build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "tsc && nodemon ./build/index.js",
+    "client": "cd.. && npm start --prefix client",
+    "start": "node ./build/index.js",
+    "ts:watch": "tsc -w",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "compression": "*",
+    "concurrently": "^3.5.1",
+    "cookie-parser": "*",
+    "cors": "*",
+    "dotenv": "*",
+    "express": "*",
+    "helmet": "*",
+    "lodash": "*",
+    "mongoose": "*",
+    "morgan": "*"
+  },
+  "devDependencies": {
+    "@types/body-parser": "*",
+    "@types/cookie-parser": "*",
+    "@types/cors": "*",
+    "@types/express": "*",
+    "@types/mongoose": "*",
+    "@types/node": "*",
+    "nodemon": "*",
+    "tslint": "*",
+    "typescript": "*"
+  }
+}
