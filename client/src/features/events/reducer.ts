@@ -11,7 +11,7 @@ export type EventsState = Readonly<{
 
 export default function reducer(state: Event[] = [], action: EventsAction) {
 	switch (action.type) {
-		case actions.GET_ALL_EVENTS:
+		case actions.GET_ALL_EVENTS + '_FULFILLED':
 			return [...state, action.payload];
 		default:
 			return state;

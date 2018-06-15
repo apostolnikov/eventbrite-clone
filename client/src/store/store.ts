@@ -1,18 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
 
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-
+import thunk from 'redux-thunk';
+import promise from 'redux-promise-middleware';
 import rootReducer from './root-reducer';
-import rootEpic from './root-epic';
 
 const composeEnhancers = (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 export const history = createBrowserHistory();
 
 function configureStore(initialState?: {}) {
 	// configure middlewares
-	const middlewares = [createEpicMiddleware(rootEpic), routerMiddleware(history)];
+	const middlewares = [thunk, promise(), routerMiddleware(history)];
 	// compose enhancers
 	const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 	// create store
