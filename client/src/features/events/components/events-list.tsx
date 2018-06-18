@@ -3,44 +3,47 @@ import { connect } from 'react-redux';
 
 import { RootState } from '../../../store';
 import { eventsActions } from '../';
-import { Event } from '../models';
-import { Col, Card } from 'react-materialize';
+import { getEventImage, getEventSegment, getEventGenre } from '../../../helpers/selectors';
+import { Card, CardTitle, Chip } from 'react-materialize';
+import './styles/events-list.css';
 
 type Props = {
-	getAllEvents: () => any;
+    getAllEvents: () => any;
+    events: any[];
 };
 
-type State = {
-    events: Event[];
-};
-
-class LoginForm extends React.Component<Props, State> {
-	readonly state: Readonly<State> = {
-		events: []
-    };
+class EventsList extends React.Component<Props, {}> {
 
     componentDidMount() {
         this.props.getAllEvents();
     }
 
 	render() {
-		const { events } = this.state;
-
+        const { events } = this.props;
 		return (
-            <Col m={6} s={12}>
-                { events.map((e) =>
-                    <Card key className="small"/>
-                        {/* header={<CardTitle image={e}>{e}</CardTitle>}
-                        actions={[<a href='#'>This is a Link</a>]}> */}
-                    )
-                }
-            </Col>
+            <div className="eventsListContainer">
+                { events.map((event) =>
+                    <Card
+                        key={event.id}
+                        className="card"
+                        header={<CardTitle image={getEventImage(event)}>{event.name}</CardTitle>}
+                    >
+                        <span className="card-text">{event.info}</span>
+                        <Chip>#{getEventSegment(event)}</Chip>
+                        <Chip>#{getEventGenre(event)}</Chip>
+                    </Card>
+                )}
+            </div>
 		);
 	}
 }
 
-const mapStateToProps = (state: RootState) => ({});
+const mapStateToProps = (state: RootState) => ({
+    events: state.events
+});
 
-export default connect(mapStateToProps, {
-	getAllEvents: () => eventsActions.getAllEvents()
-})(LoginForm);
+const mapDispatchToProps = dispatch => ({
+    getAllEvents: () => dispatch(eventsActions.getAllEvents())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsList);

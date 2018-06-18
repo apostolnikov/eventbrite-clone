@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { RootState } from '../../../store';
 import { usersActions } from '../';
 import { Button, Icon } from 'react-materialize';
+import './styles/forms.css';
 
 type Props = {
 	loginUser: (username: string, password: string) => any;
@@ -33,7 +34,7 @@ class LoginForm extends React.Component<Props, State> {
 		const { username, password } = this.state;
 
 		return (
-			<form>
+			<form className="userAuthForm">
 				<input
 					type="text"
 					name="username"

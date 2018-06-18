@@ -28,5 +28,5 @@ export type Event = {
 	// 		country: string;
 	// 		address: string;
 	// 	}
-	// ]
+	// ];
 };

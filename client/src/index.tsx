@@ -16,8 +16,9 @@ const Root = () => (
 		<ConnectedRouter history={history}>
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/login" component={LoginForm} />
-				<Route exact path="/register" component={RegisterForm} />
+				<Route path="/register" component={RegisterForm} />
+				<Route path="/login" component={LoginForm} />
+				<Route render={() => <h1>Not Found</h1>} />
 			</Switch>
 		</ConnectedRouter>
 	</Provider>

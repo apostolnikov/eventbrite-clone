@@ -11,9 +11,9 @@ export type UsersState = Readonly<{
 
 export default function reducer(state: User[] = [], action: UsersAction) {
 	switch (action.type) {
-		case actions.REGISTER:
+		case `${actions.REGISTER}_FULFILLED`:
 			return [...state, action.payload];
-		case actions.LOGIN:
+		case `${actions.LOGIN}_FULFILLED`:
 			return [...state, action.payload];
 
 		default:

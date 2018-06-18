@@ -11,8 +11,13 @@ export type EventsState = Readonly<{
 
 export default function reducer(state: Event[] = [], action: EventsAction) {
 	switch (action.type) {
-		case actions.GET_ALL_EVENTS + '_FULFILLED':
-			return [...state, action.payload];
+		case `${actions.GET_ALL_EVENTS}_FULFILLED`:
+			// cuz [...state, ...payload] doesnt work
+			return [...state].concat(action.payload);
+
+		case `${actions.SEARCH_FILTERED_EVENTS}_FULFILLED`:
+			return [...state].concat(action.payload);
+
 		default:
 			return state;
 	}

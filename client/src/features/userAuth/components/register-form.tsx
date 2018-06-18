@@ -39,7 +39,7 @@ class RegisterForm extends React.Component<Props, State> {
 		const { firstName, lastName, username, email, password } = this.state;
 
 		return (
-			<form>
+			<form className="userAuthForm">
 				<input
 					type="text"
 					name="firstName"

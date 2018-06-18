@@ -1,0 +1,9 @@
+export const getEventImage = (e) => e.images[0].url;
+export const getEventClassifications = (e) => e.classifications[0];
+export const getEventSegment = (e) => getEventClassifications(e).segment.name;
+export const getEventGenre = (e) => getEventClassifications(e).genre.name;
+export const getEventVenue = (e) => e._embedded.venues[0];
+export const getEventVenueName = (e) => getEventVenue(e).name;
+export const getEventVenueAddress = (e) => getEventVenue(e).address.line1;
+export const getEventVenueCity = (e) => getEventVenue(e).city.name;
+export const getEventVenueCountry = (e) => getEventVenue(e).country.name;
