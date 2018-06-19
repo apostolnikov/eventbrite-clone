@@ -16,7 +16,7 @@ export default function reducer(state: Event[] = [], action: EventsAction) {
 			return [...state].concat(action.payload);
 
 		case `${actions.SEARCH_FILTERED_EVENTS}_FULFILLED`:
-			return [...state].concat(action.payload);
+			return [].concat(action.payload);
 
 		default:
 			return state;

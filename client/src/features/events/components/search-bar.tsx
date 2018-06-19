@@ -38,33 +38,35 @@ class SearchBar extends React.Component<Props, State> {
 		return (
             <div className="searchBarContainer">
                 <span className="searchBarTitle">Find your next experience</span>
-                <form>
-                    <input
-                        className="searchBarInput"
-                        type="text"
-                        name="name"
-                        placeholder="Event name: "
-                        value={name}
-                        onChange={this.handleFieldChange}
-                    />
-                    <input
-                        className="searchBarInput"
-                        type="text"
-                        name="city"
-                        placeholder="City: "
-                        value={city}
-                        onChange={this.handleFieldChange}
-                    />
-                    <input
-                        className="searchBarInput"
-                        type="text"
-                        name="startDate"
-                        placeholder="Start date: "
-                        value={startDate}
-                        onChange={this.handleFieldChange}
-                    />
+                <div className="searchBarForm">
+                    <form>
+                        <input
+                            className="searchBarInput"
+                            type="text"
+                            name="name"
+                            placeholder="Event name: "
+                            value={name}
+                            onChange={this.handleFieldChange}
+                        />
+                        <input
+                            className="searchBarInput"
+                            type="text"
+                            name="city"
+                            placeholder="City: "
+                            value={city}
+                            onChange={this.handleFieldChange}
+                        />
+                        <input
+                            className="searchBarInput"
+                            type="text"
+                            name="startDate"
+                            placeholder="Start date: "
+                            value={startDate}
+                            onChange={this.handleFieldChange}
+                        />
+                    </form>
                     <Button waves="light" onClick={this.handleSearch}><Icon left>search</Icon></Button>
-                </form>
+                </div>
             </div>
 		);
 	}

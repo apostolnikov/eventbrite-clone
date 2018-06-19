@@ -10,6 +10,10 @@
     margin: 0 5px !important;
 }
 
+.searchBarForm {
+    display: flex;
+}
+
 .searchBarTitle {
     font-size: 40px;
     font-weight: 200;
