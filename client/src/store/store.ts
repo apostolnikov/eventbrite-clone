@@ -5,9 +5,11 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
 import rootReducer from './root-reducer';
+import { loadFromLocalStorage, saveToLocalStorage } from '../helpers/localStorageHelpers';
 
 const composeEnhancers = (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 export const history = createBrowserHistory();
+const persistedState = loadFromLocalStorage();
 
 function configureStore(initialState?: {}) {
 	// configure middlewares
@@ -15,11 +17,12 @@ function configureStore(initialState?: {}) {
 	// compose enhancers
 	const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 	// create store
-	return createStore(connectRouter(history)(rootReducer), initialState!, enhancer);
+	return createStore(connectRouter(history)(rootReducer), persistedState || initialState!, enhancer);
 }
 
-// pass an optional param to rehydrate state on app start
 const store = configureStore();
 
-// export store singleton instance
+// save the user state to localStorage and then on createStore we will hydrate it with the localStorage value
+store.subscribe(() => saveToLocalStorage({ user: store.getState()['user'] }));
+
 export default store;

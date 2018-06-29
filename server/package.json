@@ -1,39 +1,54 @@
 {
-  "name": "typescript-express-server",
-  "author": "Apostol Nikov",
+  "name": "eventbrite-clone",
   "version": "1.0.0",
-  "main": "./build/index.js",
-  "license": "MIT",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "server": "tsc && nodemon ./build/index.js",
+    "server": "cross-env NODE_ENV=prod nodemon src/index.js",
     "client": "cd.. && npm start --prefix client",
-    "start": "node ./build/index.js",
-    "ts:watch": "tsc -w",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "cross-env NODE_ENV=test mocha --timeout 5000 __tests__/server/**/*.test.js"
   },
+  "author": "Apostol Nikov",
+  "license": "MIT",
   "dependencies": {
-    "bcrypt-nodejs": "*",
-    "body-parser": "*",
-    "compression": "*",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
     "concurrently": "^3.5.1",
-    "cookie-parser": "*",
-    "cors": "*",
-    "dotenv": "*",
-    "express": "*",
-    "helmet": "*",
-    "lodash": "*",
-    "mongoose": "*",
-    "morgan": "*"
+    "cross-env": "^5.0.5",
+    "express": "^4.15.3",
+    "express-promise-router": "^2.0.0",
+    "joi": "^10.6.0",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.11.3",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-google-plus-token": "^2.1.0",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "@types/body-parser": "*",
-    "@types/cookie-parser": "*",
-    "@types/cors": "*",
-    "@types/express": "*",
-    "@types/mongoose": "*",
-    "@types/node": "*",
-    "nodemon": "*",
-    "tslint": "*",
-    "typescript": "*"
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "faker": "^4.1.0",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^11.1.0",
+    "rewire": "^2.5.2",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0"
+  },
+  "nyc": {
+    "exclude": [
+      "server/app.js",
+      "server/configuration/index.js",
+      "server/passport.js",
+      "server/models/**/*.js",
+      "server/helpers/**/*.js",
+      "__tests__",
+      "node_modules"
+    ],
+    "cache": false,
+    "report-dir": "./__tests__/report"
   }
 }

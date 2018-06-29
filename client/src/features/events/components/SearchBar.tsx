@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RootState } from '../../../store';
 import { eventsActions } from '../';
 import { Button, Icon } from 'react-materialize';
-import './styles/search-bar.css';
+import './styles/SearchBar.css';
 
 type Props = {
     searchEvents: (name: string, city: string, startDate: string) => any;
@@ -60,7 +60,7 @@ class SearchBar extends React.Component<Props, State> {
                             className="searchBarInput"
                             type="text"
                             name="startDate"
-                            placeholder="Start date: "
+                            placeholder="After: YYYY-MM-DD"
                             value={startDate}
                             onChange={this.handleFieldChange}
                         />

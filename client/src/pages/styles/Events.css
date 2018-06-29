@@ -1,0 +1,7 @@
+.slider, .slides {
+    height: 35vh !important;
+}
+
+.slider .slides li img {
+    background-position: initial;
+}

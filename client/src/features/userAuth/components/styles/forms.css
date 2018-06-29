@@ -1,5 +1,13 @@
-.userAuthForm {
+.userAuthFormRegister, .userAuthFormLogin {
     width: 500px;
     padding: 20px;
     margin: auto;
+}
+
+.userAuthFormLogin button:last-of-type {
+    margin-left: 5px;
+    padding-top: 4px !important;
+    padding-bottom: 7px !important;
+    font-weight: 500 !important;
+    border-radius: 3px !important;
 }

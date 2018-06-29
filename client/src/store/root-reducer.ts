@@ -7,7 +7,7 @@ import { eventsReducer } from '../features/events';
 
 const rootReducer = combineReducers({
 	router: routerReducer,
-	users: usersReducer,
+	user: usersReducer,
 	events: eventsReducer
 });
 

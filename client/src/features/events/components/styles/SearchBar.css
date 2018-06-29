@@ -1,8 +1,14 @@
 .searchBarContainer {
-    width: 630px;
-    padding: 20px 0;
+    position: relative;
+    width: 800px;
+    bottom: 95px;
+    padding: 16px 95px;
+    border-radius: 6px;
+    padding-bottom: 35px;
     margin: auto;
     text-align: center;
+    background: #fff;
+    z-index: 999;
 }
 
 .searchBarInput {
@@ -17,6 +23,6 @@
 .searchBarTitle {
     font-size: 40px;
     font-weight: 200;
-    color: #F86820;
+    color: #ee6e73;
     font-family: Benton Sans, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

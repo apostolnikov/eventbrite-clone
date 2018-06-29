@@ -1,0 +1,110 @@
+.eventsListContainer {
+    width: 65%;
+    margin: auto;
+    margin-top: -60px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.favoritesEventsListContainer {
+    width: 65%;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.card {
+    width: 380px;
+    height: 350px;
+    margin: 10px
+}
+
+.card-title {
+    width: 100%;
+    padding: 5px 20px !important;
+    background: rgb(0,0,0, 0.3);
+    font-weight: 400 !important;
+    font-size: 17px !important;
+}
+
+.card .card-image>img {
+    height: 212px;
+}
+
+.card-text {
+    width: 350px;
+    height: 70px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+}
+
+.chip {
+    background-color: #26a69a;
+    color: #fff;
+}
+
+.eventPrice {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(255,255,255,.92);
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #282C35;
+    box-sizing: border-box;
+    padding: 2px 10px;
+    display: inline-block;
+}
+
+.favoriteChip {
+    background-color: #fff !important;
+    min-height: 22px !important;
+    float: right;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 2px;
+    width: 50px;
+    padding: 0 !important;
+}
+
+.btn.toast {
+    background-color: #ee6e73 !important;
+    min-height: 26px !important;
+    margin-top: 0px !important;
+    width: 55px;
+    top: -3px !important;
+    border-radius: 30px;
+    padding: initial;
+}
+
+h2 {
+    margin: auto;
+}
+
+.removeButton {
+    position: relative;
+    bottom: 300px;
+    left: 13px;
+    background-color: #ee6e73;
+    float: right;
+    width: 35px;
+    height: 35px;
+}
+
+.removeButton > i {
+    line-height: 37px;
+}
+
+.removeButton:active, .removeButton:visited {
+    background-color: #ee6e73;
+}
+
+.removeButton:hover {
+    background-color: red;
+}
