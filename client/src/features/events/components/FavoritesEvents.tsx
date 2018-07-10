@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { RootState } from '../../../store';
 import { eventsActions } from '../';
-import { Card, CardTitle, Chip, Button } from 'react-materialize';
+import { Card, CardTitle, Chip, Button, ProgressBar } from 'react-materialize';
 import { getEventInfo } from '../../../helpers/selectors';
 import './styles/EventsList.css';
 
@@ -12,6 +12,7 @@ type Props = {
     removeEventFromFavorites: (id: string) => any;
     events: any[];
     userId: string;
+    isLoading: boolean;
 };
 
 class FavoritesEvents extends React.Component<Props, {}> {
@@ -27,12 +28,15 @@ class FavoritesEvents extends React.Component<Props, {}> {
     }
 
 	render() {
-        const { events } = this.props;
+        const { events, isLoading } = this.props;
 
 		return (
             <div className="favoritesEventsListContainer">
-                {events.length === 0 &&
+                {events.length === 0 && !isLoading &&
                     <h2>There are no events added to your favorites list!</h2>
+                }
+                {isLoading &&
+                    <ProgressBar large />
                 }
                 { events.map((event) =>
                     <Card
@@ -53,6 +57,7 @@ class FavoritesEvents extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: RootState) => ({
     events: state.events['favorites'],
+    isLoading: state.events['isLoading'],
     userId: state.user.id
 });
 

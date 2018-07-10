@@ -10,8 +10,21 @@ export const getEventVenueAddress = (e) => getEventVenue(e).address.line1;
 export const getEventVenueCity = (e) => getEventVenue(e).city.name;
 export const getEventVenueCountry = (e) => getEventVenue(e).country.name;
 export const getEventStartDateTime = (e) => e.dates.start.dateTime;
-export const getEventPrice = (e) => `${e.priceRanges[0].currency} ${e.priceRanges[0].min} - ${e.priceRanges[0].max}`;
+export const getEventPrice = (e) => e.priceRanges
+    ? `${e.priceRanges[0].currency} ${e.priceRanges[0].min} - ${e.priceRanges[0].max}` : 'FREE';
 
 // auth selectors
 export const getResData = (v) => v.data;
 export const getToken = (v) => v ? v.user.token : undefined;
+export const getErrorMessage = (res) =>  {
+    if (res.response) {
+        if (res.response.data.name) {
+            return `${res.response.data.name}: ${res.response.data.details[0].message}!`;
+        } else if (res.response.data.error) {
+            return `${res.response.data.error}!`;
+        } else if (res.response.data) {
+            return `${res.response.data}!`;
+        }
+    }
+    return '';
+};

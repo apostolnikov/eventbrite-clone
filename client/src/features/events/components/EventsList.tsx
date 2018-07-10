@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RootState } from '../../../store';
 import { eventsActions } from '../';
 import { getEventImage, getEventSegment, getEventGenre, getEventInfo, getEventPrice, getEventVenueCity } from '../../../helpers/selectors';
-import { Card, CardTitle, Chip, Icon, Toast } from 'react-materialize';
+import { Card, CardTitle, Chip, Icon, Toast, ProgressBar } from 'react-materialize';
 import './styles/EventsList.css';
 
 type Props = {
@@ -13,6 +13,7 @@ type Props = {
                         userId: string, info: string, imageUrl: string, segment: string, genre: string) => any;
     events: any[];
     userId: string;
+    isLoading: boolean;
 };
 
 class EventsList extends React.Component<Props, {}> {
@@ -28,12 +29,15 @@ class EventsList extends React.Component<Props, {}> {
     }
 
 	render() {
-        const { events, userId } = this.props;
+        const { events, userId, isLoading } = this.props;
 
 		return (
             <div className="eventsListContainer">
-                {events.length === 0 &&
+                {events.length === 0 && !isLoading &&
                     <h2>No events found!</h2>
+                }
+                {isLoading &&
+                    <ProgressBar large />
                 }
                 { events.map((event) =>
                     <Card
@@ -60,6 +64,7 @@ class EventsList extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: RootState) => ({
     events: state.events['featured'],
+    isLoading: state.events['isLoading'],
     userId: state.user.id
 });
 

@@ -11,3 +11,8 @@
     font-weight: 500 !important;
     border-radius: 3px !important;
 }
+
+.errorMessage {
+    font-size: 20px;
+    color: #ff5252;
+}

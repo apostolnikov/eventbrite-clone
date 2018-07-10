@@ -23,6 +23,10 @@ function configureStore(initialState?: {}) {
 const store = configureStore();
 
 // save the user state to localStorage and then on createStore we will hydrate it with the localStorage value
-store.subscribe(() => saveToLocalStorage({ user: store.getState()['user'] }));
+store.subscribe(() => saveToLocalStorage(
+	store.getState()['user']['error']
+	? { user: {} }
+	: { user: store.getState()['user'] })
+);
 
 export default store;

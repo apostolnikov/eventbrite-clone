@@ -9,6 +9,7 @@ import './styles/Forms.css';
 
 type Props = {
 	registerUser: (email: string, password: string) => any;
+	errorMessage: string;
 };
 
 type State = {
@@ -37,6 +38,7 @@ class RegisterForm extends React.Component<Props, State> {
 
 	render() {
 		const { email, password } = this.state;
+		const { errorMessage } = this.props;
 
 		return (
 			<div className="userAuthFormRegister">
@@ -57,12 +59,15 @@ class RegisterForm extends React.Component<Props, State> {
 					/>
 				</form>
 				<Button waves="light" onClick={this.handleRegister}>Register<Icon left>person_pin</Icon></Button>
+				<p className="errorMessage">{errorMessage}</p>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state: RootState) => ({});
+const mapStateToProps = (state: RootState) => ({
+	errorMessage: state.user['error']
+});
 
 export default connect(mapStateToProps, {
 	registerUser: (email: string, password: string) =>
