@@ -1,5 +1,5 @@
 # eventbrite-clone
-Simple app that resembles the basic functionality of eventbrite.com
+Simple app that resembles the basic functionality of eventbrite.com.
 Functionalities: sign up/sign in, events feed, search bar with different search criterias for the events feed, favorites events page/favorites events can be stored to user account.
 
 For now the client/server side are separated in different folders.
@@ -13,7 +13,7 @@ To start the project:
 ```
 
 ## Client side
-Created with React and Redux using static type checking with TypeScript
+Created with React and Redux using static type checking with TypeScript.
 Events feed and functionality are implemented using the 3rd party ticketmaster API(https://developer.ticketmaster.com/products-and-docs/apis/getting-started/)
 
 ## Server side

@@ -109,3 +109,13 @@ h2 {
 .removeButton:hover {
     background-color: red;
 }
+
+@media screen and (max-width: 1600px) {
+    .eventsListContainer {
+        width: 76%;
+    }
+    
+    .favoritesEventsListContainer {
+        width: 76%;
+    }
+}

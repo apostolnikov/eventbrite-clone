@@ -40,7 +40,7 @@ class FavoritesEvents extends React.Component<Props, {}> {
                 }
                 { events.map((event) =>
                     <Card
-                        key={event.id}
+                        key={event._id}
                         className="card"
                         header={<CardTitle image={event.imageUrl}>{event.name}</CardTitle>}
                     >

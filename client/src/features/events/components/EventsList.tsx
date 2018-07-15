@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 
 import { RootState } from '../../../store';
 import { eventsActions } from '../';
-import { getEventImage, getEventSegment, getEventGenre, getEventInfo, getEventPrice, getEventVenueCity } from '../../../helpers/selectors';
-import { Card, CardTitle, Chip, Icon, Toast, ProgressBar } from 'react-materialize';
+import Event from './Event';
+import { ProgressBar } from 'react-materialize';
 import './styles/EventsList.css';
 
 type Props = {
     getAllEvents: () => any;
-    addToUserFavorites: (name: string, eventId: string,
-                        userId: string, info: string, imageUrl: string, segment: string, genre: string) => any;
     events: any[];
-    userId: string;
     isLoading: boolean;
 };
 
@@ -22,14 +19,8 @@ class EventsList extends React.Component<Props, {}> {
         this.props.getAllEvents();
     }
 
-    addEventToFavorites = (e) => {
-        return this.props.addToUserFavorites(
-            e.name, e.id, this.props.userId, e.info, getEventImage(e), getEventSegment(e), getEventGenre(e)
-        );
-    }
-
 	render() {
-        const { events, userId, isLoading } = this.props;
+        const { events, isLoading } = this.props;
 
 		return (
             <div className="eventsListContainer">
@@ -40,22 +31,7 @@ class EventsList extends React.Component<Props, {}> {
                     <ProgressBar large />
                 }
                 { events.map((event) =>
-                    <Card
-                        key={event.id}
-                        className="card"
-                        header={<CardTitle image={getEventImage(event)}>{event.name}</CardTitle>}
-                    >
-                        <span className="card-text">{getEventInfo(event)}</span>
-                        <span className="eventPrice">{getEventPrice(event)}</span>
-                        <Chip>#{getEventVenueCity(event)}</Chip>
-                        <Chip>#{getEventSegment(event)}</Chip>
-                        <Chip>#{getEventGenre(event)}</Chip>
-                        {userId &&
-                            <span onClick={() => this.addEventToFavorites(event)} className="chip favoriteChip">
-                                <Toast toast="Successfully added!"><Icon tiny>favorite</Icon></Toast>
-                            </span>
-                        }
-                    </Card>
+                    <Event key={event.id} event={event}/>
                 )}
             </div>
 		);
@@ -64,14 +40,11 @@ class EventsList extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: RootState) => ({
     events: state.events['featured'],
-    isLoading: state.events['isLoading'],
-    userId: state.user.id
+    isLoading: state.events['isLoading']
 });
 
 const mapDispatchToProps = dispatch => ({
-    getAllEvents: () => dispatch(eventsActions.getAllEvents()),
-    addToUserFavorites: (name: string, eventId: string, userId: string, info: string, imageUrl: string, segment: string, genre: string) =>
-                        dispatch(eventsActions.addEventToUserFavorites(name, eventId, userId, info, imageUrl, segment, genre))
+    getAllEvents: () => dispatch(eventsActions.getAllEvents())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsList);
