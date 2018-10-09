@@ -9,7 +9,7 @@ module.exports = {
 		const foundUser = await User.findOne({ "_id": userId });
 		if (!foundUser) {
 			return res.status(404).json({ error: `User with id: ${userId} not found!` });
-		}
+        }
 
         const duplicateEvent = await Event.findOne({ "userId": userId, "eventId": eventId });
         if (duplicateEvent) {
@@ -25,11 +25,11 @@ module.exports = {
 			imageUrl: imageUrl,
 			segment: segment,
 			genre: genre
-		});
+        });
 
         await newEvent.save();
 
-		// Respond 
+		// Respond
 		res.status(200).json({event: 'Created successfully!'});
     },
 
@@ -44,7 +44,7 @@ module.exports = {
             }
         });
     },
-    
+
     getByUserId: async (req, res, next) => {
         const { userId } = req.value.body;
 
